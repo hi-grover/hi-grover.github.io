@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Himanshu Grover - Portfolio</title>
-  <meta name="description" content="Academic portfolio of Dr. Himanshu Grover" />
+  <title>Publications - Dr. Himanshu Grover</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,10 +20,10 @@
           },
           colors: {
             academic: {
-              blue: '#1d4ed8', // Classic academic link blue
-              dark: '#0f172a', // Deep charcoal for headings
-              text: '#334155', // Softer dark gray for reading
-              bg: '#f8fafc',   // Very light gray/blue off-white background
+              blue: '#1d4ed8',
+              dark: '#0f172a',
+              text: '#334155',
+              bg: '#0f172a', 
             }
           }
         }
@@ -34,22 +33,28 @@
 
   <style>
     body {
-      /* Soft morning sky gradient + subtle star pattern for an astro-theme */
-      background-color: #f8fafc;
-      background-image: 
-        radial-gradient(circle at top right, rgba(224, 242, 254, 0.6), transparent 50%),
-        radial-gradient(circle at bottom left, rgba(241, 245, 249, 0.8), transparent 50%),
-        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%2394a3b8' opacity='0.4'/%3E%3Ccircle cx='60' cy='40' r='1' fill='%2394a3b8' opacity='0.3'/%3E%3Ccircle cx='40' cy='80' r='2' fill='%23cbd5e1' opacity='0.5'/%3E%3Ccircle cx='90' cy='90' r='1' fill='%2394a3b8' opacity='0.4'/%3E%3Cpath d='M10 10 L60 40 L40 80' stroke='%23e2e8f0' stroke-width='0.5' fill='none' opacity='0.5'/%3E%3C/svg%3E");
-      background-attachment: fixed;
-      color: #334155;
+      background-color: #0f172a; 
+      color: #e2e8f0; 
       font-family: "Times New Roman", Times, serif;
-      font-size: 1.125rem; /* Increased base font size */
+      font-size: 1.125rem;
       line-height: 1.7;
       overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Fixed Canvas for interactive background */
+    #star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      color: #0f172a;
+      color: #ffffff;
     }
 
     .author-self {
@@ -58,58 +63,54 @@
     }
     
     .pub-tab.active {
-      background-color: #1d4ed8;
+      background-color: #3b82f6;
       color: #ffffff;
-      border-color: #1d4ed8;
+      border-color: #3b82f6;
     }
 
-    .timeline-dot {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      background-color: #1d4ed8;
-      border-radius: 50%;
-      left: -8px;
-      top: 8px;
+    .content-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative">
+
+  <!-- Interactive Star Background -->
+  <canvas id="star-canvas"></canvas>
 
   <!-- Sticky Top Navigation Bar -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-md shadow-sm">
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-800 bg-academic-dark/90 backdrop-blur-md shadow-sm">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Brand -->
-      <a href="#overview" class="flex items-center gap-3 group focus:outline-none">
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
         <div>
-          <!-- Increased Font Size significantly -->
-          <span class="font-bold text-4xl tracking-tight text-academic-dark block leading-none">Dr. Himanshu Grover</span>
-          <span class="text-base text-academic-blue block mt-1 uppercase tracking-widest font-bold">IIT Roorkee</span>
+          <span class="font-bold text-4xl tracking-tight text-white block leading-none">Dr. Himanshu Grover</span>
+          <span class="text-base text-blue-400 block mt-1 uppercase tracking-widest font-bold">IIT Roorkee</span>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-6 text-xl font-bold text-academic-text">
-        <a href="#overview" class="hover:text-academic-blue transition">Overview</a>
-        <a href="#appointments" class="hover:text-academic-blue transition">Experience</a>
-        <a href="#research" class="hover:text-academic-blue transition">Research</a>
-        <a href="#teaching" class="hover:text-academic-blue transition">Teaching</a>
-        <a href="#publications" class="hover:text-academic-blue transition">Publications</a>
+      <nav class="hidden md:flex items-center gap-6 text-xl font-bold text-gray-300">
+        <a href="index.html#appointments" class="hover:text-blue-400 transition">Experience</a>
+        <a href="index.html#research" class="hover:text-blue-400 transition">Research</a>
+        <a href="index.html#teaching" class="hover:text-blue-400 transition">Teaching</a>
+        <a href="publications.html" class="text-blue-400 transition">Publications</a>
       </nav>
 
       <!-- Mobile Menu Toggle -->
-      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-academic-text hover:text-academic-blue focus:outline-none">
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-blue-400 focus:outline-none">
         <i class="fa-solid fa-bars text-3xl"></i>
       </button>
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-4 space-y-4 text-xl font-bold shadow-lg">
-      <a href="#overview" onclick="toggleMobileMenu()" class="block text-academic-text hover:text-academic-blue">Overview</a>
-      <a href="#appointments" onclick="toggleMobileMenu()" class="block text-academic-text hover:text-academic-blue">Experience</a>
-      <a href="#research" onclick="toggleMobileMenu()" class="block text-academic-text hover:text-academic-blue">Research</a>
-      <a href="#teaching" onclick="toggleMobileMenu()" class="block text-academic-text hover:text-academic-blue">Teaching</a>
-      <a href="#publications" onclick="toggleMobileMenu()" class="block text-academic-text hover:text-academic-blue">Publications</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-academic-dark px-4 py-4 space-y-4 text-xl font-bold shadow-lg">
+      <a href="index.html#appointments" class="block text-gray-300 hover:text-blue-400">Experience</a>
+      <a href="index.html#research" class="block text-gray-300 hover:text-blue-400">Research</a>
+      <a href="index.html#teaching" class="block text-gray-300 hover:text-blue-400">Teaching</a>
+      <a href="publications.html" class="block text-blue-400">Publications</a>
     </div>
   </header>
 
@@ -117,267 +118,38 @@
   <main class="pt-32 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- ==========================================
-         OVERVIEW 
+         PUBLICATIONS
     =========================================== -->
-    <section id="overview" class="mb-24 space-y-16">
-      
-      <!-- Bio Header -->
-      <div class="bg-white/60 backdrop-blur-sm p-8 rounded-xl border border-gray-200 shadow-sm">
-        <h1 class="text-5xl sm:text-6xl font-bold tracking-tight mb-6">
-          Dr. Himanshu Grover
-        </h1>
-        <p class="text-2xl sm:text-3xl text-academic-dark font-bold mb-3">
-          Research Associate in Astrophysics @ <span class="text-academic-blue">Indian Institute of Technology Roorkee</span>
-        </p>
-        <p class="text-xl text-gray-600 italic mb-8 border-l-4 border-gray-300 pl-4">
-          Research Associate, NCRA–TIFR Pune • Ph.D. in Physics (IIT Roorkee, 2025)
-        </p>
-        <p class="text-xl leading-relaxed max-w-4xl mb-8 text-gray-800">
-          I am a pulsar astronomer investigating the extreme physics of rotating neutron stars and nanohertz gravitational waves. My research bridges radio & X-ray pulsar observations (uGMRT, ORT, AstroSat), high-precision pulsar timing arrays (InPTA / IPTA), pulsar timing irregularities, and Bayesian modeling.
-        </p>
-
-        <!-- Links -->
-        <div class="flex flex-wrap items-center gap-4 text-lg">
-          <a href="#publications" class="px-6 py-3 border-2 border-academic-dark text-academic-dark hover:bg-academic-dark hover:text-white font-bold transition">
-            Explore Publications
-          </a>
-          <a href="mailto:himanshugrover.hg2@gmail.com" class="px-6 py-3 bg-academic-blue hover:bg-blue-800 text-white font-bold transition">
-            Contact Me
-          </a>
-          <div class="flex gap-4 ml-2">
-            <a href="https://orcid.org/0009-0004-1150-6151" target="_blank" class="text-gray-500 hover:text-academic-blue transition text-3xl" title="ORCID"><i class="fa-brands fa-orcid"></i></a>
-            <a href="https://github.com/hi-grover" target="_blank" class="text-gray-500 hover:text-academic-dark transition text-3xl" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/-himanshugrover-/" target="_blank" class="text-gray-500 hover:text-academic-blue transition text-3xl" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         RESEARCH APPOINTMENTS & EDUCATION
-    =========================================== -->
-    <section id="appointments" class="mb-24 pt-12 border-t border-gray-300">
-      <h2 class="text-4xl font-bold mb-10 uppercase tracking-wide border-b-2 border-gray-200 pb-2">Research Appointments & Education</h2>
-      
-      <div class="grid grid-cols-1 gap-16">
-        
-        <!-- Appointments Roadmap -->
+    <section id="publications" class="mb-24 content-card p-8 rounded-xl">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b-2 border-gray-700 pb-4">
         <div>
-          <h3 class="text-3xl font-bold mb-8 text-academic-dark">Research Appointments</h3>
-          <div class="relative border-l-2 border-gray-300 ml-3 space-y-10 py-2">
-            
-            <div class="relative pl-8">
-              <div class="timeline-dot"></div>
-              <div class="font-bold text-academic-blue text-xl italic mb-1">September 2026 – Present <span class="text-gray-500 text-lg ml-2 font-normal">(Current Position)</span></div>
-              <h4 class="font-bold text-2xl text-academic-dark">Research Associate</h4>
-              <p class="text-xl text-gray-800 font-bold mb-1">Indian Institute of Technology Roorkee, India</p>
-              <p class="text-lg text-gray-700 mb-1">Research on pulsar timing, automated analysis pipelines, and neutron-star interior physics.</p>
-              <p class="text-lg text-gray-600 italic">Host: Prof. P. Arumugam (Department of Physics)</p>
-            </div>
-
-            <div class="relative pl-8">
-              <div class="timeline-dot bg-gray-400"></div>
-              <div class="font-bold text-gray-600 text-xl italic mb-1">January 2026 – June 2026</div>
-              <h4 class="font-bold text-2xl text-academic-dark">Research Associate</h4>
-              <p class="text-xl text-gray-800 font-bold mb-1">National Centre for Radio Astrophysics – Tata Institute of Fundamental Research (NCRA-TIFR)</p>
-              <p class="text-lg text-gray-700 mb-1">Pune, India. Research on Indian Pulsar Timing Array (InPTA) Data Release III and high-precision pulsar timing projects.</p>
-              <p class="text-lg text-gray-600 italic">Host: Prof. Bhal Chandra Joshi</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education Roadmap -->
-        <div>
-          <h3 class="text-3xl font-bold mb-8 text-academic-dark">Education</h3>
-          <div class="relative border-l-2 border-gray-300 ml-3 space-y-10 py-2">
-            
-            <div class="relative pl-8">
-              <div class="timeline-dot"></div>
-              <div class="font-bold text-academic-blue text-xl italic mb-1">February 2021 – December 2025</div>
-              <h4 class="font-bold text-2xl text-academic-dark">Ph.D. in Physics</h4>
-              <p class="text-xl text-gray-800 font-bold mb-1">Indian Institute of Technology Roorkee, India</p>
-              <p class="text-lg text-gray-700 mb-1"><strong>Thesis:</strong> Timing Investigation of Young and Millisecond Pulsars</p>
-              <p class="text-lg text-gray-700 mb-1"><strong>Supervisors/Mentors:</strong> Prof. P. Arumugam (IIT Roorkee), Prof. Bhal Chandra Joshi (NCRA-TIFR), and Prof. Erbil Gügercinoğlu</p>
-              <p class="text-lg text-gray-600 italic">Coursework CGPA: 9.25 / 10</p>
-            </div>
-
-            <div class="relative pl-8">
-              <div class="timeline-dot bg-gray-400"></div>
-              <div class="font-bold text-gray-600 text-xl italic mb-1">July 2018 – June 2020</div>
-              <h4 class="font-bold text-2xl text-academic-dark">Master of Science (M.Sc.) in Physics</h4>
-              <p class="text-xl text-gray-800 font-bold mb-1">Indian Institute of Technology (Indian School of Mines) Dhanbad, India</p>
-              <p class="text-lg text-gray-700 mb-1"><strong>M.Sc. Thesis:</strong> Upconversion Nanomaterials: Synthesis, Characterization, and Applications (Supervisor: Prof. Kaushal Kumar, IIT-ISM Dhanbad)</p>
-              <p class="text-lg text-gray-700 mb-1"><strong>Summer Project Thesis (IIA Bangalore):</strong> Why galaxies stop forming stars? (Supervisor: Prof. Sudhanshu Barway, Indian Institute of Astrophysics Bangalore)</p>
-              <p class="text-lg text-gray-600 italic">CGPA: 8.96 / 10</p>
-            </div>
-
-            <div class="relative pl-8">
-              <div class="timeline-dot bg-gray-400"></div>
-              <div class="font-bold text-gray-600 text-xl italic mb-1">July 2014 – June 2017</div>
-              <h4 class="font-bold text-2xl text-academic-dark">Bachelor of Science (B.Sc.) in Electronics</h4>
-              <p class="text-xl text-gray-800 font-bold mb-1">Deen Dayal Upadhyaya College, University of Delhi, India</p>
-              <p class="text-lg text-gray-700 mb-1">With Physics, Mathematics, and Computer Science as ancillary subjects.</p>
-              <p class="text-lg text-gray-600 italic">Grades: 83.33% (Awarded Shri Ghasi Ram Mittal Memorial Award & Certificate of Merit for securing the highest marks)</p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         HONORS & AWARDS (Simple Text format)
-    =========================================== -->
-    <section class="mb-24 pt-12 border-t border-gray-300">
-      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-200 pb-2">Honors, Awards & Grants</h2>
-      
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-2xl font-bold text-academic-dark mb-3">Awards & Recognition</h3>
-          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-800">
-            <li><strong>Winners of Bharatiya Antariksh Hackathon 2024:</strong> Organised by the Indian Space Research Organisation (ISRO). Felicitated by the Honourable President of India (Smt. Droupadi Murmu).</li>
-            <li><strong>Best Paper and Presentation Award:</strong> National Space Science Symposium 2024, organised by ISRO.</li>
-            <li><strong>Shri Ghasi Ram Mittal Memorial Award (2014-15) and Certificate of Merit (2015-16):</strong> Awarded by Deen Dayal Upadhyaya College, University of Delhi, for securing the highest marks.</li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="text-2xl font-bold text-academic-dark mb-3">Funding, Fellowships & Grants</h3>
-          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-800">
-            <li><strong>Anusandhan National Research Foundation (ANRF) International Travel Scheme (ITS) Grant:</strong> 2025.</li>
-            <li><strong>MHRD Senior Research Fellowship:</strong> 2023 – 2025.</li>
-            <li><strong>MHRD Junior Research Fellowship:</strong> 2021 – 2023.</li>
-            <li><strong>Merit-cum-Means Scholarship:</strong> 2018 – 2020, awarded by IIT (ISM) Dhanbad.</li>
-            <li><strong>Summer Research Fellowship:</strong> IIA Bangalore, 2019.</li>
-            <li><strong>Central Sector Scheme of Scholarship:</strong> For college and university students 2014 – 2017, awarded by the Central Board of Secondary Education.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-bold text-academic-dark mb-3">National Level Competitive Exams</h3>
-          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-800">
-            <li>Qualified <strong>Graduate Aptitude Test in Engineering (GATE) Physics</strong> (2021).</li>
-            <li>Qualified <strong>Joint CSIR - UGC NET</strong> June 2020 (held in November 2020).</li>
-            <li>Qualified <strong>IIT Joint Admission Test for Master (JAM) in Physics</strong> (2018).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         RESEARCH & MEMBERSHIPS 
-    =========================================== -->
-    <section id="research" class="mb-24 pt-12 border-t border-gray-300">
-      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-200 pb-2">Research Focus & Memberships</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div>
-          <h3 class="text-2xl font-bold text-academic-dark mb-4">Core Research Interests</h3>
-          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-800">
-            <li>Radio pulsar observations and high-precision timing arrays.</li>
-            <li>Investigation of pulsar timing irregularities and neutron star interior physics.</li>
-            <li>Pulse profile analysis and Bayesian modelling methodologies.</li>
-            <li>Application of machine-learning methods in astrophysics.</li>
-            <li>Stochastic gravitational wave background searches.</li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="text-2xl font-bold text-academic-dark mb-4">International Collaborations & Memberships</h3>
-          <ul class="list-none space-y-5 text-xl text-gray-800">
-            <li>
-              <strong class="text-academic-dark">SKAO Pulsars Science Working Group</strong><br>
-              Associate Member • Square Kilometre Array Observatory (May 2025 – Present)
-            </li>
-            <li>
-              <strong class="text-academic-dark">SKA India Neutron Star Science Working Group</strong><br>
-              Member • SKA-India Consortium (Dec 2024 – Present)
-            </li>
-            <li>
-              <strong class="text-academic-dark">International Pulsar Timing Array (IPTA)</strong><br>
-              Member • Global Nanohertz Gravitational Wave Consortium (Aug 2024 – Present)
-            </li>
-            <li>
-              <strong class="text-academic-dark">Indian Pulsar Timing Array (InPTA)</strong><br>
-              Member • uGMRT Wideband Precision Timing Experiment (Aug 2024 – Present)
-            </li>
-            <li>
-              <strong class="text-academic-dark">Radio Telescope Project — IIT Roorkee</strong><br>
-              Mentor and Coordinator (Jan 2022 – Jun 2025)
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         TEACHING (Full list)
-    =========================================== -->
-    <section id="teaching" class="mb-24 pt-12 border-t border-gray-300">
-      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-200 pb-2">Teaching Assistantship</h2>
-      
-      <p class="text-xl text-gray-800 mb-6 font-bold">Indian Institute of Technology Roorkee</p>
-      <ul class="list-disc pl-6 space-y-3 text-xl text-gray-800">
-        <li><strong>Modern Physics Tutorials:</strong> August – November 2024</li>
-        <li><strong>Physics Lab:</strong> August – November 2024</li>
-        <li><strong>Electricity and Magnetism Lab:</strong> January – May 2024</li>
-        <li><strong>Advance Python Lab:</strong> July – November 2023</li>
-        <li><strong>Basic Python Lab:</strong> July – November 2023</li>
-        <li><strong>Electricity and Magnetism Lab:</strong> February – May 2023</li>
-        <li><strong>Modern Physics Tutorials:</strong> October 2022 – January 2023</li>
-        <li><strong>Modern Physics Lab:</strong> January – May 2022</li>
-      </ul>
-    </section>
-
-    <!-- ==========================================
-         PUBLICATIONS (Numbered)
-    =========================================== -->
-    <section id="publications" class="mb-24 pt-12 border-t border-gray-300">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b-2 border-gray-200 pb-2">
-        <div>
-          <h2 class="text-4xl font-bold uppercase tracking-wide">Publications</h2>
+          <h1 class="text-5xl font-bold uppercase tracking-wide">Publications</h1>
         </div>
         <!-- Search -->
         <div class="relative w-full md:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-          <input type="text" id="pub-search-input" oninput="filterPublications()" placeholder="Search publications..." class="w-full pl-10 pr-3 py-2 border border-gray-300 bg-white/80 text-lg focus:outline-none focus:border-academic-blue transition" />
+          <input type="text" id="pub-search-input" oninput="filterPublications()" placeholder="Search publications..." class="w-full pl-10 pr-3 py-2 border border-gray-600 bg-gray-800 text-white text-lg focus:outline-none focus:border-blue-400 transition" />
         </div>
       </div>
 
       <!-- Filters -->
       <div class="flex flex-wrap gap-3 mb-10">
-        <button onclick="setPubCategory('all')" id="pub-tab-all" class="pub-tab active px-4 py-2 text-lg font-bold border border-gray-300 transition bg-white/80">All</button>
-        <button onclick="setPubCategory('journal')" id="pub-tab-journal" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-300 hover:bg-gray-200 transition bg-white/80">Journals</button>
-        <button onclick="setPubCategory('conference')" id="pub-tab-conference" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-300 hover:bg-gray-200 transition bg-white/80">Conferences</button>
-        <button onclick="setPubCategory('atel')" id="pub-tab-atel" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-300 hover:bg-gray-200 transition bg-white/80">ATels</button>
+        <button onclick="setPubCategory('all')" id="pub-tab-all" class="pub-tab active px-4 py-2 text-lg font-bold border border-gray-600 transition bg-gray-800 text-gray-300">All</button>
+        <button onclick="setPubCategory('journal')" id="pub-tab-journal" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Journals</button>
+        <button onclick="setPubCategory('conference')" id="pub-tab-conference" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Conferences</button>
+        <button onclick="setPubCategory('atel')" id="pub-tab-atel" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">ATels</button>
       </div>
 
       <!-- Text List Container -->
       <div id="publications-container" class="space-y-8 text-xl"></div>
     </section>
-
-    <!-- ==========================================
-         CONTACT
-    =========================================== -->
-    <section id="contact" class="pt-12 border-t border-gray-300 pb-10">
-      <div class="bg-white/80 backdrop-blur-sm border border-gray-200 p-10 text-center max-w-3xl mx-auto shadow-sm">
-        <h2 class="text-4xl font-bold mb-6 uppercase tracking-wide">Get in Touch</h2>
-        <div class="space-y-4 text-xl text-academic-dark font-bold mb-8">
-          <p><i class="fa-solid fa-envelope text-academic-blue mr-3"></i> <a href="mailto:himanshugrover.hg2@gmail.com" class="hover:underline">himanshugrover.hg2@gmail.com</a></p>
-          <p><i class="fa-solid fa-location-dot text-academic-blue mr-3"></i> Dept. of Physics, IIT Roorkee, India</p>
-        </div>
-      </div>
-      
-      <footer class="mt-20 text-center text-lg text-gray-500">
-        © Dr. Himanshu Grover. Last updated: Oct 2026
-      </footer>
-    </section>
   </main>
 
-  <!-- ==========================================
-       JAVASCRIPT: DATA LOGIC
-  =========================================== -->
   <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
     // PUBLICATIONS DATASET
     const publicationsData = [
       {
@@ -516,21 +288,20 @@
 
       container.innerHTML = filtered.map((pub, index) => {
         const linksArr = [];
-        if (pub.arxiv) linksArr.push(`<a href="https://arxiv.org/abs/${pub.arxiv}" target="_blank" class="text-academic-blue hover:underline whitespace-nowrap">[arXiv]</a>`);
-        if (pub.atel) linksArr.push(`<a href="https://www.astronomerstelegram.org/?read=${pub.atel}" target="_blank" class="text-academic-blue hover:underline whitespace-nowrap">[ATel]</a>`);
-        if (pub.ads) linksArr.push(`<a href="${pub.ads}" target="_blank" class="text-academic-blue hover:underline whitespace-nowrap">[NASA ADS]</a>`);
+        if (pub.arxiv) linksArr.push(`<a href="https://arxiv.org/abs/${pub.arxiv}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[arXiv]</a>`);
+        if (pub.atel) linksArr.push(`<a href="https://www.astronomerstelegram.org/?read=${pub.atel}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[ATel]</a>`);
+        if (pub.ads) linksArr.push(`<a href="${pub.ads}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[NASA ADS]</a>`);
         const linksHtml = linksArr.length > 0 ? `&nbsp; ${linksArr.join(' ')}` : '';
 
         const venueHtml = pub.doi && pub.doi !== '' 
-          ? `<a href="${pub.doi}" target="_blank" class="italic text-academic-blue hover:underline">${pub.venue}</a>`
-          : `<span class="italic">${pub.venue}</span>`;
+          ? `<a href="${pub.doi}" target="_blank" class="italic text-blue-400 hover:underline">${pub.venue}</a>`
+          : `<span class="italic text-gray-300">${pub.venue}</span>`;
 
         return `
-          <div class="mb-8 pb-8 border-b border-gray-200 last:border-0 last:pb-0 last:mb-0">
-            <!-- Adding Index numbers dynamically to the title -->
-            <h3 class="font-bold text-2xl text-academic-dark mb-1">${index + 1}. ${pub.title}</h3>
-            <p class="text-gray-800 mb-1">${pub.authors}</p>
-            <p class="text-gray-900">
+          <div class="mb-8 pb-8 border-b border-gray-700 last:border-0 last:pb-0 last:mb-0">
+            <h3 class="font-bold text-2xl text-white mb-1">${index + 1}. ${pub.title}</h3>
+            <p class="text-gray-400 mb-1">${pub.authors}</p>
+            <p class="text-gray-500">
               ${venueHtml} (${pub.year}) ${linksHtml}
             </p>
           </div>
@@ -541,21 +312,121 @@
     function setPubCategory(cat) {
       activePubCategory = cat;
       document.querySelectorAll('.pub-tab').forEach(btn => {
-        btn.className = 'pub-tab px-4 py-2 text-lg font-bold border border-gray-300 hover:bg-gray-200 transition bg-white/80';
+        btn.className = 'pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300';
       });
-      document.getElementById(`pub-tab-${cat}`).className = 'pub-tab active px-4 py-2 text-lg font-bold border border-academic-blue transition shadow-sm';
+      document.getElementById(`pub-tab-${cat}`).className = 'pub-tab active px-4 py-2 text-lg font-bold border border-blue-500 transition shadow-sm';
       renderPublications();
     }
 
     function filterPublications() { renderPublications(); }
 
-    function toggleMobileMenu() {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    }
-
     window.onload = function () {
       renderPublications();
     };
+
+    // Interactive Constellation Starfield Background (AAS.org style)
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width, height, particles;
+    let mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('mousemove', function(event) {
+      mouse.x = event.x;
+      mouse.y = event.y;
+    });
+    
+    window.addEventListener('mouseout', function() {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener('resize', initCanvas);
+
+    class Particle {
+      constructor(x, y, dx, dy, size) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.size = size;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fill();
+      }
+      update() {
+        if (this.x > width || this.x < 0) this.dx = -this.dx;
+        if (this.y > height || this.y < 0) this.dy = -this.dy;
+
+        // Interaction
+        if (mouse.x != null && mouse.y != null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (mouse.radius - distance) / mouse.radius;
+            this.x -= forceDirectionX * force * 2;
+            this.y -= forceDirectionY * force * 2;
+          }
+        }
+        
+        this.x += this.dx;
+        this.y += this.dy;
+        this.draw();
+      }
+    }
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      let numberOfParticles = (width * height) / 9000;
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 1.5) + 0.5;
+        let x = (Math.random() * ((width - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((height - size * 2) - (size * 2)) + size * 2);
+        let dx = (Math.random() - 0.5) * 0.5;
+        let dy = (Math.random() - 0.5) * 0.5;
+        particles.push(new Particle(x, y, dx, dy, size));
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+      connectParticles();
+    }
+
+    function connectParticles() {
+      let opacityValue = 1;
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                       + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+          if (distance < (width/7) * (height/7)) {
+            opacityValue = 1 - (distance / 20000);
+            ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacityValue * 0.2 + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    initCanvas();
+    animate();
   </script>
 </body>
 </html>
