@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publications - Dr. Himanshu Grover</title>
+  <title>Dr. Himanshu Grover - Portfolio</title>
+  <meta name="description" content="Academic portfolio of Dr. Himanshu Grover" />
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +24,7 @@
               blue: '#1d4ed8',
               dark: '#0f172a',
               text: '#334155',
-              bg: '#0f172a', 
+              bg: '#0f172a', // Darkened for star effect visibility
             }
           }
         }
@@ -33,8 +34,8 @@
 
   <style>
     body {
-      background-color: #0f172a; 
-      color: #e2e8f0; 
+      background-color: #0f172a; /* Dark background for the interactive stars */
+      color: #e2e8f0; /* Lighter text for dark mode */
       font-family: "Times New Roman", Times, serif;
       font-size: 1.125rem;
       line-height: 1.7;
@@ -50,24 +51,24 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      pointer-events: none;
+      pointer-events: none; /* Let clicks pass through to content */
     }
 
     h1, h2, h3, h4, h5, h6 {
       color: #ffffff;
     }
 
-    .author-self {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    
-    .pub-tab.active {
+    .timeline-dot {
+      position: absolute;
+      width: 14px;
+      height: 14px;
       background-color: #3b82f6;
-      color: #ffffff;
-      border-color: #3b82f6;
+      border-radius: 50%;
+      left: -8px;
+      top: 8px;
     }
 
+    /* Content cards background */
     .content-card {
       background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(10px);
@@ -93,10 +94,10 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-6 text-xl font-bold text-gray-300">
-        <a href="index.html#appointments" class="hover:text-blue-400 transition">Experience</a>
-        <a href="index.html#research" class="hover:text-blue-400 transition">Research</a>
-        <a href="index.html#teaching" class="hover:text-blue-400 transition">Teaching</a>
-        <a href="publications.html" class="text-blue-400 transition">Publications</a>
+        <a href="#appointments" class="hover:text-blue-400 transition">Experience</a>
+        <a href="#research" class="hover:text-blue-400 transition">Research</a>
+        <a href="#teaching" class="hover:text-blue-400 transition">Teaching</a>
+        <a href="publications.html" class="hover:text-blue-400 transition">Publications</a>
       </nav>
 
       <!-- Mobile Menu Toggle -->
@@ -107,10 +108,10 @@
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-academic-dark px-4 py-4 space-y-4 text-xl font-bold shadow-lg">
-      <a href="index.html#appointments" class="block text-gray-300 hover:text-blue-400">Experience</a>
-      <a href="index.html#research" class="block text-gray-300 hover:text-blue-400">Research</a>
-      <a href="index.html#teaching" class="block text-gray-300 hover:text-blue-400">Teaching</a>
-      <a href="publications.html" class="block text-blue-400">Publications</a>
+      <a href="#appointments" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-blue-400">Experience</a>
+      <a href="#research" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-blue-400">Research</a>
+      <a href="#teaching" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-blue-400">Teaching</a>
+      <a href="publications.html" class="block text-gray-300 hover:text-blue-400">Publications</a>
     </div>
   </header>
 
@@ -118,30 +119,233 @@
   <main class="pt-32 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- ==========================================
-         PUBLICATIONS
+         OVERVIEW 
     =========================================== -->
-    <section id="publications" class="mb-24 content-card p-8 rounded-xl">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b-2 border-gray-700 pb-4">
+    <section id="overview" class="mb-24 space-y-16">
+      
+      <!-- Bio Header -->
+      <div class="content-card p-8 rounded-xl shadow-lg">
+        <h1 class="text-5xl sm:text-6xl font-bold tracking-tight mb-6">
+          Dr. Himanshu Grover
+        </h1>
+        <p class="text-2xl sm:text-3xl text-white font-bold mb-3">
+          Research Associate in Astrophysics @ <span class="text-blue-400">Indian Institute of Technology Roorkee</span>
+        </p>
+        <p class="text-xl text-gray-400 italic mb-8 border-l-4 border-gray-600 pl-4">
+          Research Associate, NCRA–TIFR Pune • Ph.D. in Physics (IIT Roorkee, 2025)
+        </p>
+        <p class="text-xl leading-relaxed max-w-4xl mb-8 text-gray-300">
+          I am a pulsar astronomer investigating the extreme physics of rotating neutron stars and nanohertz gravitational waves. My research bridges radio & X-ray pulsar observations (uGMRT, ORT, AstroSat), high-precision pulsar timing arrays (InPTA / IPTA), pulsar timing irregularities, and Bayesian modeling.
+        </p>
+
+        <!-- Links -->
+        <div class="flex flex-wrap items-center gap-4 text-lg">
+          <a href="publications.html" class="px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-academic-dark font-bold transition">
+            Explore Publications
+          </a>
+          <a href="mailto:himanshugrover.hg2@gmail.com" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold transition">
+            Contact Me
+          </a>
+          <div class="flex gap-4 ml-2">
+            <a href="https://orcid.org/0009-0004-1150-6151" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-3xl" title="ORCID"><i class="fa-brands fa-orcid"></i></a>
+            <a href="https://github.com/hi-grover" target="_blank" class="text-gray-400 hover:text-white transition text-3xl" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/-himanshugrover-/" target="_blank" class="text-gray-400 hover:text-blue-400 transition text-3xl" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         RESEARCH APPOINTMENTS & EDUCATION
+    =========================================== -->
+    <section id="appointments" class="mb-24 pt-12 border-t border-gray-700">
+      <h2 class="text-4xl font-bold mb-10 uppercase tracking-wide border-b-2 border-gray-700 pb-2">Research Appointments & Education</h2>
+      
+      <div class="grid grid-cols-1 gap-16">
+        
+        <!-- Appointments Roadmap -->
         <div>
-          <h1 class="text-5xl font-bold uppercase tracking-wide">Publications</h1>
+          <h3 class="text-3xl font-bold mb-8 text-white">Research Appointments</h3>
+          <div class="relative border-l-2 border-gray-600 ml-3 space-y-10 py-2">
+            
+            <div class="relative pl-8">
+              <div class="timeline-dot"></div>
+              <div class="font-bold text-blue-400 text-xl italic mb-1">September 2026 – Present <span class="text-gray-400 text-lg ml-2 font-normal">(Current Position)</span></div>
+              <h4 class="font-bold text-2xl text-white">Research Associate</h4>
+              <p class="text-xl text-gray-300 font-bold mb-1">Indian Institute of Technology Roorkee, India</p>
+              <p class="text-lg text-gray-400 mb-1">Research on pulsar timing, automated analysis pipelines, and neutron-star interior physics.</p>
+              <p class="text-lg text-gray-500 italic">Host: Prof. P. Arumugam (Department of Physics)</p>
+            </div>
+
+            <div class="relative pl-8">
+              <div class="timeline-dot bg-gray-500"></div>
+              <div class="font-bold text-gray-400 text-xl italic mb-1">January 2026 – June 2026</div>
+              <h4 class="font-bold text-2xl text-white">Research Associate</h4>
+              <p class="text-xl text-gray-300 font-bold mb-1">National Centre for Radio Astrophysics – Tata Institute of Fundamental Research (NCRA-TIFR)</p>
+              <p class="text-lg text-gray-400 mb-1">Pune, India. Research on Indian Pulsar Timing Array (InPTA) Data Release III and high-precision pulsar timing projects.</p>
+              <p class="text-lg text-gray-500 italic">Host: Prof. Bhal Chandra Joshi</p>
+            </div>
+          </div>
         </div>
-        <!-- Search -->
-        <div class="relative w-full md:w-72">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-          <input type="text" id="pub-search-input" oninput="filterPublications()" placeholder="Search publications..." class="w-full pl-10 pr-3 py-2 border border-gray-600 bg-gray-800 text-white text-lg focus:outline-none focus:border-blue-400 transition" />
+
+        <!-- Education Roadmap -->
+        <div>
+          <h3 class="text-3xl font-bold mb-8 text-white">Education</h3>
+          <div class="relative border-l-2 border-gray-600 ml-3 space-y-10 py-2">
+            
+            <div class="relative pl-8">
+              <div class="timeline-dot"></div>
+              <div class="font-bold text-blue-400 text-xl italic mb-1">February 2021 – December 2025</div>
+              <h4 class="font-bold text-2xl text-white">Ph.D. in Physics</h4>
+              <p class="text-xl text-gray-300 font-bold mb-1">Indian Institute of Technology Roorkee, India</p>
+              <p class="text-lg text-gray-400 mb-1"><strong>Thesis:</strong> Timing Investigation of Young and Millisecond Pulsars</p>
+              <p class="text-lg text-gray-400 mb-1"><strong>Supervisors/Mentors:</strong> Prof. P. Arumugam (IIT Roorkee), Prof. Bhal Chandra Joshi (NCRA-TIFR), and Prof. Erbil Gügercinoğlu</p>
+              <p class="text-lg text-gray-500 italic">Coursework CGPA: 9.25 / 10</p>
+            </div>
+
+            <div class="relative pl-8">
+              <div class="timeline-dot bg-gray-500"></div>
+              <div class="font-bold text-gray-400 text-xl italic mb-1">July 2018 – June 2020</div>
+              <h4 class="font-bold text-2xl text-white">Master of Science (M.Sc.) in Physics</h4>
+              <p class="text-xl text-gray-300 font-bold mb-1">Indian Institute of Technology (Indian School of Mines) Dhanbad, India</p>
+              <p class="text-lg text-gray-400 mb-1"><strong>M.Sc. Thesis:</strong> Upconversion Nanomaterials: Synthesis, Characterization, and Applications (Supervisor: Prof. Kaushal Kumar, IIT-ISM Dhanbad)</p>
+              <p class="text-lg text-gray-400 mb-1"><strong>Summer Project Thesis (IIA Bangalore):</strong> Why galaxies stop forming stars? (Supervisor: Prof. Sudhanshu Barway, Indian Institute of Astrophysics Bangalore)</p>
+              <p class="text-lg text-gray-500 italic">CGPA: 8.96 / 10</p>
+            </div>
+
+            <div class="relative pl-8">
+              <div class="timeline-dot bg-gray-500"></div>
+              <div class="font-bold text-gray-400 text-xl italic mb-1">July 2014 – June 2017</div>
+              <h4 class="font-bold text-2xl text-white">Bachelor of Science (B.Sc.) in Electronics</h4>
+              <p class="text-xl text-gray-300 font-bold mb-1">Deen Dayal Upadhyaya College, University of Delhi, India</p>
+              <p class="text-lg text-gray-400 mb-1">With Physics, Mathematics, and Computer Science as ancillary subjects.</p>
+              <p class="text-lg text-gray-500 italic">Grades: 83.33% (Awarded Shri Ghasi Ram Mittal Memorial Award & Certificate of Merit for securing the highest marks)</p>
+            </div>
+
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Filters -->
-      <div class="flex flex-wrap gap-3 mb-10">
-        <button onclick="setPubCategory('all')" id="pub-tab-all" class="pub-tab active px-4 py-2 text-lg font-bold border border-gray-600 transition bg-gray-800 text-gray-300">All</button>
-        <button onclick="setPubCategory('journal')" id="pub-tab-journal" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Journals</button>
-        <button onclick="setPubCategory('conference')" id="pub-tab-conference" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Conferences</button>
-        <button onclick="setPubCategory('atel')" id="pub-tab-atel" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">ATels</button>
+    <!-- ==========================================
+         HONORS & AWARDS
+    =========================================== -->
+    <section class="mb-24 pt-12 border-t border-gray-700">
+      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-700 pb-2">Honors, Awards & Grants</h2>
+      
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-3">Awards & Recognition</h3>
+          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-300">
+            <li><strong>Winners of Bharatiya Antariksh Hackathon 2024:</strong> Organised by the Indian Space Research Organisation (ISRO). Felicitated by the Honourable President of India (Smt. Droupadi Murmu).</li>
+            <li><strong>Best Paper and Presentation Award:</strong> National Space Science Symposium 2024, organised by ISRO.</li>
+            <li><strong>Shri Ghasi Ram Mittal Memorial Award (2014-15) and Certificate of Merit (2015-16):</strong> Awarded by Deen Dayal Upadhyaya College, University of Delhi, for securing the highest marks.</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-3">Funding, Fellowships & Grants</h3>
+          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-300">
+            <li><strong>Anusandhan National Research Foundation (ANRF) International Travel Scheme (ITS) Grant:</strong> 2025.</li>
+            <li><strong>MHRD Senior Research Fellowship:</strong> 2023 – 2025.</li>
+            <li><strong>MHRD Junior Research Fellowship:</strong> 2021 – 2023.</li>
+            <li><strong>Merit-cum-Means Scholarship:</strong> 2018 – 2020, awarded by IIT (ISM) Dhanbad.</li>
+            <li><strong>Summer Research Fellowship:</strong> IIA Bangalore, 2019.</li>
+            <li><strong>Central Sector Scheme of Scholarship:</strong> For college and university students 2014 – 2017, awarded by the Central Board of Secondary Education.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-3">National Level Competitive Exams</h3>
+          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-300">
+            <li>Qualified <strong>Graduate Aptitude Test in Engineering (GATE) Physics</strong> (2021).</li>
+            <li>Qualified <strong>Joint CSIR - UGC NET</strong> June 2020 (held in November 2020).</li>
+            <li>Qualified <strong>IIT Joint Admission Test for Master (JAM) in Physics</strong> (2018).</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <!-- Text List Container -->
-      <div id="publications-container" class="space-y-8 text-xl"></div>
+    <!-- ==========================================
+         RESEARCH & MEMBERSHIPS 
+    =========================================== -->
+    <section id="research" class="mb-24 pt-12 border-t border-gray-700">
+      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-700 pb-2">Research Focus & Memberships</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-4">Core Research Interests</h3>
+          <ul class="list-disc pl-6 space-y-3 text-xl text-gray-300">
+            <li>Radio pulsar observations and high-precision timing arrays.</li>
+            <li>Investigation of pulsar timing irregularities and neutron star interior physics.</li>
+            <li>Pulse profile analysis and Bayesian modelling methodologies.</li>
+            <li>Application of machine-learning methods in astrophysics.</li>
+            <li>Stochastic gravitational wave background searches.</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-4">International Collaborations & Memberships</h3>
+          <ul class="list-none space-y-5 text-xl text-gray-300">
+            <li>
+              <strong class="text-white">SKAO Pulsars Science Working Group</strong><br>
+              Associate Member • Square Kilometre Array Observatory (May 2025 – Present)
+            </li>
+            <li>
+              <strong class="text-white">SKA India Neutron Star Science Working Group</strong><br>
+              Member • SKA-India Consortium (Dec 2024 – Present)
+            </li>
+            <li>
+              <strong class="text-white">International Pulsar Timing Array (IPTA)</strong><br>
+              Member • Global Nanohertz Gravitational Wave Consortium (Aug 2024 – Present)
+            </li>
+            <li>
+              <strong class="text-white">Indian Pulsar Timing Array (InPTA)</strong><br>
+              Member • uGMRT Wideband Precision Timing Experiment (Aug 2024 – Present)
+            </li>
+            <li>
+              <strong class="text-white">Radio Telescope Project — IIT Roorkee</strong><br>
+              Mentor and Coordinator (Jan 2022 – Jun 2025)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TEACHING
+    =========================================== -->
+    <section id="teaching" class="mb-24 pt-12 border-t border-gray-700">
+      <h2 class="text-4xl font-bold mb-8 uppercase tracking-wide border-b-2 border-gray-700 pb-2">Teaching Assistantship</h2>
+      
+      <p class="text-xl text-gray-300 mb-6 font-bold">Indian Institute of Technology Roorkee</p>
+      <ul class="list-disc pl-6 space-y-3 text-xl text-gray-300">
+        <li><strong>Modern Physics Tutorials:</strong> August – November 2024</li>
+        <li><strong>Physics Lab:</strong> August – November 2024</li>
+        <li><strong>Electricity and Magnetism Lab:</strong> January – May 2024</li>
+        <li><strong>Advance Python Lab:</strong> July – November 2023</li>
+        <li><strong>Basic Python Lab:</strong> July – November 2023</li>
+        <li><strong>Electricity and Magnetism Lab:</strong> February – May 2023</li>
+        <li><strong>Modern Physics Tutorials:</strong> October 2022 – January 2023</li>
+        <li><strong>Modern Physics Lab:</strong> January – May 2022</li>
+      </ul>
+    </section>
+
+    <!-- ==========================================
+         CONTACT
+    =========================================== -->
+    <section id="contact" class="pt-12 border-t border-gray-700 pb-10">
+      <div class="content-card p-10 text-center max-w-3xl mx-auto rounded-xl shadow-lg">
+        <h2 class="text-4xl font-bold mb-6 uppercase tracking-wide text-white">Get in Touch</h2>
+        <div class="space-y-4 text-xl text-white font-bold mb-8">
+          <p><i class="fa-solid fa-envelope text-blue-400 mr-3"></i> <a href="mailto:himanshugrover.hg2@gmail.com" class="hover:underline">himanshugrover.hg2@gmail.com</a></p>
+          <p><i class="fa-solid fa-location-dot text-blue-400 mr-3"></i> Dept. of Physics, IIT Roorkee, India</p>
+        </div>
+      </div>
+      
+      <footer class="mt-20 text-center text-lg text-gray-500">
+        © Dr. Himanshu Grover. Last updated: Oct 2026
+      </footer>
     </section>
   </main>
 
@@ -149,180 +353,6 @@
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
-
-    // PUBLICATIONS DATASET
-    const publicationsData = [
-      {
-        id: 'J1', category: 'journal', year: '2026',
-        title: 'Profile Reconstruction from Temporally Stable Emission Components for Timing PSR J1713+0747',
-        authors: 'Shaswata Chowdhury, M. A. Krishnakumar, Sharika Dhakappa, Vidit Singh, Debabrata Deb, Jyotijwal Debnath, Kaustubh Rai, Pratik Tarafdar, Abhimanyu Susobhanan, Churchil Dwivedi, Bhal Chandra Joshi, Shantanu Desai, Neelam Dhanda Batra, Jaikhomba Singha, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Submitted to Journal of High Energy Astrophysics', 
-        arxiv: '2608.04108', doi: '', ads: ''
-      },
-      {
-        id: 'J2', category: 'journal', year: '2026',
-        title: 'The Indian Pulsar Timing Array Data Release 2: III. Search for a Stochastic Gravitational Wave Background',
-        authors: 'Hemanga Tahbildar, Kunjal Vara, Mayuresh Surnis, Churchil Dwivedi, Bhal Chandra Joshi, Sharika Dhakappa, Aman Srivastava, Shantanu Desai, Abhimanyu Susobhanan, Adya Shukla, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Submitted to Physical Review D', 
-        arxiv: '2608.02808', doi: '', ads: ''
-      },
-      {
-        id: 'J3', category: 'journal', year: '2026',
-        title: 'Observations of the 21 cm H I Line from the Milky Way galaxy using Pyramidal Horn Radio Telescope',
-        authors: 'Kaustav Bhattacharjee, <span class="author-self">Himanshu Grover</span>, P. Arumugam',
-        venue: 'Journal of Astrophysics and Astronomy, 47, 75', 
-        arxiv: '2512.19262', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J4', category: 'journal', year: '2026',
-        title: 'The Indian Pulsar Timing Array Data Release 2: II. Customised Single-Pulsar Noise Analysis and Noise Budget',
-        authors: 'K. Nobleson, Churchil Dwivedi, Shantanu Desai, Bhal Chandra Joshi, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Journal of High Energy Astrophysics, 53, 100594', 
-        arxiv: '2512.20455', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J5', category: 'journal', year: '2026',
-        title: 'Revisiting wideband pulsar timing measurements',
-        authors: 'Abhimanyu Susobhanan, Avinash Kumar Paladi, Réka Desmecht, Amarnath, Manjari Bagchi, Manoneeta Chakraborty, Shaswata Chowdhury, Suruj Jyoti Das, Debabrata Deb, Shantanu Desai, Churchil Dwivedi, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Monthly Notices of the Royal Astronomical Society (MNRAS), 547, 4', 
-        arxiv: '2512.01288', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J6', category: 'journal', year: '2026',
-        title: 'Post-glitch Recovery and the Neutron Star Structure: The Vela Pulsar',
-        authors: '<span class="author-self">Himanshu Grover</span>, Erbil Gügercinoğlu, Bhal Chandra Joshi, M. A. Krishnakumar, Shantanu Desai, P. Arumugam, and Debades Bandyopadhyay',
-        venue: 'Publications of the Astronomical Society of Australia (PASA), 43, 25', 
-        arxiv: '2506.02100', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J7', category: 'journal', year: '2025',
-        title: 'The Indian Pulsar Timing Array Data Release 2: I. Dataset and Timing Analysis',
-        authors: 'Prerna Rana, Pratik Tarafdar, Nobleson K, Churchil Dwivedi, Bhal Chandra Joshi, Debabrata Deb, Sushovan Mondal, M. A. Krishnakumar, Adya Shukla, Jaikhomba Singha, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Publications of the Astronomical Society of Australia (PASA), 42, 108', 
-        arxiv: '2506.16769', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J8', category: 'journal', year: '2024',
-        title: 'The ORT and the uGMRT Pulsar Monitoring Program: Pulsar Timing Irregularities & the Gaussian Process Realisation',
-        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, Jaikhomba Singha, Erbil Gügercinoğlu, P. Arumugam, et al.',
-        venue: 'Publications of the Astronomical Society of Australia (PASA), 41, 102', 
-        arxiv: '2405.14351', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'J9', category: 'journal', year: '2022',
-        title: 'Pulsar timing irregularities and the Neutron Star interior in the era of SKA: An Indian Outlook',
-        authors: 'Jaikhomba Singha, Bhal Chandra Joshi, Debades Bandyopadhyay, <span class="author-self">Himanshu Grover</span>, et al.',
-        venue: 'Journal of Astrophysics and Astronomy, 43, 81', 
-        arxiv: '2207.06446', doi: 'https://doi.org/', ads: ''
-      },
-      {
-        id: 'A1', category: 'atel', year: '2025',
-        title: 'Confirmation of a glitch in PSR J1740-3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)',
-        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, M. A. Krishnakumar and P. Arumugam',
-        venue: "The Astronomer's Telegram #17489", 
-        atel: '17489', doi: '', ads: ''
-      },
-      {
-        id: 'A2', category: 'atel', year: '2024',
-        title: 'Vela pulsar (PSR J0835-4510) glitch observed at the Ooty Radio Telescope (ORT)',
-        authors: '<span class="author-self">Himanshu Grover</span>, M. A. Krishnakumar, Bhal Chandra Joshi, and P. Arumugam',
-        venue: "The Astronomer's Telegram #16611", 
-        atel: '16611', doi: '', ads: ''
-      },
-      {
-        id: 'A3', category: 'atel', year: '2023',
-        title: 'Confirmation of glitch event detected in PSR J1740-3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)',
-        authors: '<span class="author-self">Himanshu Grover</span>, Jaikhomba Singha, Bhal Chandra Joshi, P. Arumugam, et al.',
-        venue: "The Astronomer's Telegram #15851", 
-        atel: '15851', doi: '', ads: ''
-      },
-      {
-        id: 'A4', category: 'atel', year: '2022',
-        title: 'Detection of a glitch event in PSR J0742-2822 observed using the Automated Glitch Detection Pipeline implemented at the Ooty Radio Telescope (ORT)',
-        authors: '<span class="author-self">Himanshu Grover</span>, Jaikhomba Singha, Bhal Chandra Joshi, and P. Arumugam',
-        venue: "The Astronomer's Telegram #15629", 
-        atel: '15629', doi: '', ads: ''
-      },
-      {
-        id: 'P1', category: 'conference', year: '2024',
-        title: 'Machine learning approaches to automate the calibration process for γ-ray detectors',
-        authors: 'Shubham Sudarshanam, Madhu, <span class="author-self">Himanshu Grover</span>, A. Y. Deo, and P. Arumugam',
-        venue: 'DAE Symposium on Nuclear Physics 68, 1115–1116', doi: '', ads: ''
-      },
-      {
-        id: 'P2', category: 'conference', year: '2024',
-        title: 'Bayesian Inference for Modeling Pulsar Glitch Recovery',
-        authors: 'Niraj Lambe, <span class="author-self">Himanshu Grover</span>, and P. Arumugam',
-        venue: 'DAE Symposium on Nuclear Physics 68, 751–752', doi: '', ads: ''
-      },
-      {
-        id: 'P4', category: 'conference', year: '2024',
-        title: 'The ORT and the uGMRT Pulsar Monitoring Program: Timing Irregularities in Pulsars',
-        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, and P. Arumugam',
-        venue: '6th URSI Regional Conference on Radio Science', doi: '', ads: ''
-      },
-      {
-        id: 'P5', category: 'conference', year: '2022',
-        title: 'Revisiting the fractional moment of inertia of rotating neutron stars',
-        authors: '<span class="author-self">Himanshu Grover</span>, Bhavnesh Bhat, Jaikhomba Singha, Ankit Kumar, and P. Arumugam',
-        venue: 'DAE Symposium on Nuclear Physics 66, 778–779', doi: '', ads: ''
-      }
-    ];
-
-    let activePubCategory = 'all';
-
-    function renderPublications() {
-      const container = document.getElementById('publications-container');
-      const query = (document.getElementById('pub-search-input')?.value || '').toLowerCase().trim();
-
-      const filtered = publicationsData.filter(pub => {
-        const matchesCat = activePubCategory === 'all' || pub.category === activePubCategory;
-        const matchesQuery = !query || pub.title.toLowerCase().includes(query) || pub.venue.toLowerCase().includes(query) || pub.authors.toLowerCase().includes(query) || pub.year.includes(query);
-        return matchesCat && matchesQuery;
-      });
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<div class="p-6 text-center text-gray-500 italic">No publications matched your search.</div>`;
-        return;
-      }
-
-      container.innerHTML = filtered.map((pub, index) => {
-        const linksArr = [];
-        if (pub.arxiv) linksArr.push(`<a href="https://arxiv.org/abs/${pub.arxiv}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[arXiv]</a>`);
-        if (pub.atel) linksArr.push(`<a href="https://www.astronomerstelegram.org/?read=${pub.atel}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[ATel]</a>`);
-        if (pub.ads) linksArr.push(`<a href="${pub.ads}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[NASA ADS]</a>`);
-        const linksHtml = linksArr.length > 0 ? `&nbsp; ${linksArr.join(' ')}` : '';
-
-        const venueHtml = pub.doi && pub.doi !== '' 
-          ? `<a href="${pub.doi}" target="_blank" class="italic text-blue-400 hover:underline">${pub.venue}</a>`
-          : `<span class="italic text-gray-300">${pub.venue}</span>`;
-
-        return `
-          <div class="mb-8 pb-8 border-b border-gray-700 last:border-0 last:pb-0 last:mb-0">
-            <h3 class="font-bold text-2xl text-white mb-1">${index + 1}. ${pub.title}</h3>
-            <p class="text-gray-400 mb-1">${pub.authors}</p>
-            <p class="text-gray-500">
-              ${venueHtml} (${pub.year}) ${linksHtml}
-            </p>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function setPubCategory(cat) {
-      activePubCategory = cat;
-      document.querySelectorAll('.pub-tab').forEach(btn => {
-        btn.className = 'pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300';
-      });
-      document.getElementById(`pub-tab-${cat}`).className = 'pub-tab active px-4 py-2 text-lg font-bold border border-blue-500 transition shadow-sm';
-      renderPublications();
-    }
-
-    function filterPublications() { renderPublications(); }
-
-    window.onload = function () {
-      renderPublications();
-    };
 
     // Interactive Constellation Starfield Background (AAS.org style)
     const canvas = document.getElementById('star-canvas');
