@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications - Dr. Himanshu Grover</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Times New Roman"', 'Times', 'serif'],
+          },
+          colors: {
+            academic: {
+              blue: '#1d4ed8',
+              dark: '#0f172a',
+              text: '#334155',
+              bg: '#0f172a', 
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0f172a; 
+      color: #e2e8f0; 
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Fixed Canvas for interactive background */
+    #star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff;
+    }
+
+    .author-self {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    
+    .pub-tab.active {
+      background-color: #3b82f6;
+      color: #ffffff;
+      border-color: #3b82f6;
+    }
+
+    .content-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="antialiased relative">
+
+  <!-- Interactive Star Background -->
+  <canvas id="star-canvas"></canvas>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-800 bg-academic-dark/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+        <div>
+          <span class="font-bold text-4xl tracking-tight text-white block leading-none">Dr. Himanshu Grover</span>
+          <span class="text-base text-blue-400 block mt-1 uppercase tracking-widest font-bold">IIT Roorkee</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-xl font-bold text-gray-300">
+        <a href="index.html#appointments" class="hover:text-blue-400 transition">Experience</a>
+        <a href="index.html#research" class="hover:text-blue-400 transition">Research</a>
+        <a href="index.html#teaching" class="hover:text-blue-400 transition">Teaching</a>
+        <a href="publications.html" class="text-blue-400 transition">Publications</a>
+      </nav>
+
+      <!-- Mobile Menu Toggle -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-blue-400 focus:outline-none">
+        <i class="fa-solid fa-bars text-3xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-academic-dark px-4 py-4 space-y-4 text-xl font-bold shadow-lg">
+      <a href="index.html#appointments" class="block text-gray-300 hover:text-blue-400">Experience</a>
+      <a href="index.html#research" class="block text-gray-300 hover:text-blue-400">Research</a>
+      <a href="index.html#teaching" class="block text-gray-300 hover:text-blue-400">Teaching</a>
+      <a href="publications.html" class="block text-blue-400">Publications</a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="pt-32 pb-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- ==========================================
+         PUBLICATIONS
+    =========================================== -->
+    <section id="publications" class="mb-24 content-card p-8 rounded-xl">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b-2 border-gray-700 pb-4">
+        <div>
+          <h1 class="text-5xl font-bold uppercase tracking-wide">Publications</h1>
+        </div>
+        <!-- Search -->
+        <div class="relative w-full md:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="pub-search-input" oninput="filterPublications()" placeholder="Search publications..." class="w-full pl-10 pr-3 py-2 border border-gray-600 bg-gray-800 text-white text-lg focus:outline-none focus:border-blue-400 transition" />
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <button onclick="setPubCategory('all')" id="pub-tab-all" class="pub-tab active px-4 py-2 text-lg font-bold border border-gray-600 transition bg-gray-800 text-gray-300">All</button>
+        <button onclick="setPubCategory('journal')" id="pub-tab-journal" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Journals</button>
+        <button onclick="setPubCategory('conference')" id="pub-tab-conference" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">Conferences</button>
+        <button onclick="setPubCategory('atel')" id="pub-tab-atel" class="pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300">ATels</button>
+      </div>
+
+      <!-- Text List Container -->
+      <div id="publications-container" class="space-y-8 text-xl"></div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    // PUBLICATIONS DATASET
+    const publicationsData = [
+      {
+        id: 'J1', category: 'journal', year: '2026',
+        title: 'Profile Reconstruction from Temporally Stable Emission Components for Timing PSR J1713+0747',
+        authors: 'Shaswata Chowdhury, M. A. Krishnakumar, Sharika Dhakappa, Vidit Singh, Debabrata Deb, Jyotijwal Debnath, Kaustubh Rai, Pratik Tarafdar, Abhimanyu Susobhanan, Churchil Dwivedi, Bhal Chandra Joshi, Shantanu Desai, Neelam Dhanda Batra, Jaikhomba Singha, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Submitted to Journal of High Energy Astrophysics', 
+        arxiv: '2608.04108', doi: '', ads: ''
+      },
+      {
+        id: 'J2', category: 'journal', year: '2026',
+        title: 'The Indian Pulsar Timing Array Data Release 2: III. Search for a Stochastic Gravitational Wave Background',
+        authors: 'Hemanga Tahbildar, Kunjal Vara, Mayuresh Surnis, Churchil Dwivedi, Bhal Chandra Joshi, Sharika Dhakappa, Aman Srivastava, Shantanu Desai, Abhimanyu Susobhanan, Adya Shukla, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Submitted to Physical Review D', 
+        arxiv: '2608.02808', doi: '', ads: ''
+      },
+      {
+        id: 'J3', category: 'journal', year: '2026',
+        title: 'Observations of the 21 cm H I Line from the Milky Way galaxy using Pyramidal Horn Radio Telescope',
+        authors: 'Kaustav Bhattacharjee, <span class="author-self">Himanshu Grover</span>, P. Arumugam',
+        venue: 'Journal of Astrophysics and Astronomy, 47, 75', 
+        arxiv: '2512.19262', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J4', category: 'journal', year: '2026',
+        title: 'The Indian Pulsar Timing Array Data Release 2: II. Customised Single-Pulsar Noise Analysis and Noise Budget',
+        authors: 'K. Nobleson, Churchil Dwivedi, Shantanu Desai, Bhal Chandra Joshi, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Journal of High Energy Astrophysics, 53, 100594', 
+        arxiv: '2512.20455', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J5', category: 'journal', year: '2026',
+        title: 'Revisiting wideband pulsar timing measurements',
+        authors: 'Abhimanyu Susobhanan, Avinash Kumar Paladi, Réka Desmecht, Amarnath, Manjari Bagchi, Manoneeta Chakraborty, Shaswata Chowdhury, Suruj Jyoti Das, Debabrata Deb, Shantanu Desai, Churchil Dwivedi, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Monthly Notices of the Royal Astronomical Society (MNRAS), 547, 4', 
+        arxiv: '2512.01288', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J6', category: 'journal', year: '2026',
+        title: 'Post-glitch Recovery and the Neutron Star Structure: The Vela Pulsar',
+        authors: '<span class="author-self">Himanshu Grover</span>, Erbil Gügercinoğlu, Bhal Chandra Joshi, M. A. Krishnakumar, Shantanu Desai, P. Arumugam, and Debades Bandyopadhyay',
+        venue: 'Publications of the Astronomical Society of Australia (PASA), 43, 25', 
+        arxiv: '2506.02100', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J7', category: 'journal', year: '2025',
+        title: 'The Indian Pulsar Timing Array Data Release 2: I. Dataset and Timing Analysis',
+        authors: 'Prerna Rana, Pratik Tarafdar, Nobleson K, Churchil Dwivedi, Bhal Chandra Joshi, Debabrata Deb, Sushovan Mondal, M. A. Krishnakumar, Adya Shukla, Jaikhomba Singha, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Publications of the Astronomical Society of Australia (PASA), 42, 108', 
+        arxiv: '2506.16769', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J8', category: 'journal', year: '2024',
+        title: 'The ORT and the uGMRT Pulsar Monitoring Program: Pulsar Timing Irregularities & the Gaussian Process Realisation',
+        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, Jaikhomba Singha, Erbil Gügercinoğlu, P. Arumugam, et al.',
+        venue: 'Publications of the Astronomical Society of Australia (PASA), 41, 102', 
+        arxiv: '2405.14351', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'J9', category: 'journal', year: '2022',
+        title: 'Pulsar timing irregularities and the Neutron Star interior in the era of SKA: An Indian Outlook',
+        authors: 'Jaikhomba Singha, Bhal Chandra Joshi, Debades Bandyopadhyay, <span class="author-self">Himanshu Grover</span>, et al.',
+        venue: 'Journal of Astrophysics and Astronomy, 43, 81', 
+        arxiv: '2207.06446', doi: 'https://doi.org/', ads: ''
+      },
+      {
+        id: 'A1', category: 'atel', year: '2025',
+        title: 'Confirmation of a glitch in PSR J1740-3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)',
+        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, M. A. Krishnakumar and P. Arumugam',
+        venue: "The Astronomer's Telegram #17489", 
+        atel: '17489', doi: '', ads: ''
+      },
+      {
+        id: 'A2', category: 'atel', year: '2024',
+        title: 'Vela pulsar (PSR J0835-4510) glitch observed at the Ooty Radio Telescope (ORT)',
+        authors: '<span class="author-self">Himanshu Grover</span>, M. A. Krishnakumar, Bhal Chandra Joshi, and P. Arumugam',
+        venue: "The Astronomer's Telegram #16611", 
+        atel: '16611', doi: '', ads: ''
+      },
+      {
+        id: 'A3', category: 'atel', year: '2023',
+        title: 'Confirmation of glitch event detected in PSR J1740-3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)',
+        authors: '<span class="author-self">Himanshu Grover</span>, Jaikhomba Singha, Bhal Chandra Joshi, P. Arumugam, et al.',
+        venue: "The Astronomer's Telegram #15851", 
+        atel: '15851', doi: '', ads: ''
+      },
+      {
+        id: 'A4', category: 'atel', year: '2022',
+        title: 'Detection of a glitch event in PSR J0742-2822 observed using the Automated Glitch Detection Pipeline implemented at the Ooty Radio Telescope (ORT)',
+        authors: '<span class="author-self">Himanshu Grover</span>, Jaikhomba Singha, Bhal Chandra Joshi, and P. Arumugam',
+        venue: "The Astronomer's Telegram #15629", 
+        atel: '15629', doi: '', ads: ''
+      },
+      {
+        id: 'P1', category: 'conference', year: '2024',
+        title: 'Machine learning approaches to automate the calibration process for γ-ray detectors',
+        authors: 'Shubham Sudarshanam, Madhu, <span class="author-self">Himanshu Grover</span>, A. Y. Deo, and P. Arumugam',
+        venue: 'DAE Symposium on Nuclear Physics 68, 1115–1116', doi: '', ads: ''
+      },
+      {
+        id: 'P2', category: 'conference', year: '2024',
+        title: 'Bayesian Inference for Modeling Pulsar Glitch Recovery',
+        authors: 'Niraj Lambe, <span class="author-self">Himanshu Grover</span>, and P. Arumugam',
+        venue: 'DAE Symposium on Nuclear Physics 68, 751–752', doi: '', ads: ''
+      },
+      {
+        id: 'P4', category: 'conference', year: '2024',
+        title: 'The ORT and the uGMRT Pulsar Monitoring Program: Timing Irregularities in Pulsars',
+        authors: '<span class="author-self">Himanshu Grover</span>, Bhal Chandra Joshi, and P. Arumugam',
+        venue: '6th URSI Regional Conference on Radio Science', doi: '', ads: ''
+      },
+      {
+        id: 'P5', category: 'conference', year: '2022',
+        title: 'Revisiting the fractional moment of inertia of rotating neutron stars',
+        authors: '<span class="author-self">Himanshu Grover</span>, Bhavnesh Bhat, Jaikhomba Singha, Ankit Kumar, and P. Arumugam',
+        venue: 'DAE Symposium on Nuclear Physics 66, 778–779', doi: '', ads: ''
+      }
+    ];
+
+    let activePubCategory = 'all';
+
+    function renderPublications() {
+      const container = document.getElementById('publications-container');
+      const query = (document.getElementById('pub-search-input')?.value || '').toLowerCase().trim();
+
+      const filtered = publicationsData.filter(pub => {
+        const matchesCat = activePubCategory === 'all' || pub.category === activePubCategory;
+        const matchesQuery = !query || pub.title.toLowerCase().includes(query) || pub.venue.toLowerCase().includes(query) || pub.authors.toLowerCase().includes(query) || pub.year.includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-6 text-center text-gray-500 italic">No publications matched your search.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map((pub, index) => {
+        const linksArr = [];
+        if (pub.arxiv) linksArr.push(`<a href="https://arxiv.org/abs/${pub.arxiv}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[arXiv]</a>`);
+        if (pub.atel) linksArr.push(`<a href="https://www.astronomerstelegram.org/?read=${pub.atel}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[ATel]</a>`);
+        if (pub.ads) linksArr.push(`<a href="${pub.ads}" target="_blank" class="text-blue-400 hover:underline whitespace-nowrap">[NASA ADS]</a>`);
+        const linksHtml = linksArr.length > 0 ? `&nbsp; ${linksArr.join(' ')}` : '';
+
+        const venueHtml = pub.doi && pub.doi !== '' 
+          ? `<a href="${pub.doi}" target="_blank" class="italic text-blue-400 hover:underline">${pub.venue}</a>`
+          : `<span class="italic text-gray-300">${pub.venue}</span>`;
+
+        return `
+          <div class="mb-8 pb-8 border-b border-gray-700 last:border-0 last:pb-0 last:mb-0">
+            <h3 class="font-bold text-2xl text-white mb-1">${index + 1}. ${pub.title}</h3>
+            <p class="text-gray-400 mb-1">${pub.authors}</p>
+            <p class="text-gray-500">
+              ${venueHtml} (${pub.year}) ${linksHtml}
+            </p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setPubCategory(cat) {
+      activePubCategory = cat;
+      document.querySelectorAll('.pub-tab').forEach(btn => {
+        btn.className = 'pub-tab px-4 py-2 text-lg font-bold border border-gray-600 hover:bg-gray-700 transition bg-gray-800 text-gray-300';
+      });
+      document.getElementById(`pub-tab-${cat}`).className = 'pub-tab active px-4 py-2 text-lg font-bold border border-blue-500 transition shadow-sm';
+      renderPublications();
+    }
+
+    function filterPublications() { renderPublications(); }
+
+    window.onload = function () {
+      renderPublications();
+    };
+
+    // Interactive Constellation Starfield Background (AAS.org style)
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width, height, particles;
+    let mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('mousemove', function(event) {
+      mouse.x = event.x;
+      mouse.y = event.y;
+    });
+    
+    window.addEventListener('mouseout', function() {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener('resize', initCanvas);
+
+    class Particle {
+      constructor(x, y, dx, dy, size) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.size = size;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fill();
+      }
+      update() {
+        if (this.x > width || this.x < 0) this.dx = -this.dx;
+        if (this.y > height || this.y < 0) this.dy = -this.dy;
+
+        // Interaction
+        if (mouse.x != null && mouse.y != null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (mouse.radius - distance) / mouse.radius;
+            this.x -= forceDirectionX * force * 2;
+            this.y -= forceDirectionY * force * 2;
+          }
+        }
+        
+        this.x += this.dx;
+        this.y += this.dy;
+        this.draw();
+      }
+    }
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      let numberOfParticles = (width * height) / 9000;
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 1.5) + 0.5;
+        let x = (Math.random() * ((width - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((height - size * 2) - (size * 2)) + size * 2);
+        let dx = (Math.random() - 0.5) * 0.5;
+        let dy = (Math.random() - 0.5) * 0.5;
+        particles.push(new Particle(x, y, dx, dy, size));
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+      connectParticles();
+    }
+
+    function connectParticles() {
+      let opacityValue = 1;
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                       + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+          if (distance < (width/7) * (height/7)) {
+            opacityValue = 1 - (distance / 20000);
+            ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacityValue * 0.2 + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    initCanvas();
+    animate();
+  </script>
+</body>
+</html>
