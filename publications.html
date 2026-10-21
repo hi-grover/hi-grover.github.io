@@ -42,8 +42,8 @@ body {
   background-attachment: fixed;
 }
 
-#stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
-
+#gw { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
@@ -238,7 +238,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 @media print {
-  #stars, .nav { display: none; }
+  #gw, .nav { display: none; }
   body { background: #fff; color: #000; }
 }
 
@@ -385,6 +385,23 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
     <a href="index.html">← Back to home</a>
   </div>
 </footer>
+
+<script>
+(function () {
+  var toggle = document.querySelector(".nav-toggle"), links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") { links.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
+    });
+  }
+  var yr = document.getElementById("year");
+  if (yr) yr.textContent = new Date().getFullYear();
+})();
+</script>
 
 <script src="background-loader.js"></script>
 
