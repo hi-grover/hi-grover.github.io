@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publications · Himanshu Grover</title>
+  <meta name="description" content="Journal articles, Astronomer's Telegrams, conference proceedings and talks by Himanshu Grover.">
+  <meta name="theme-color" content="#05070f">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuMzUiIHN0b3AtY29sb3I9IiM4ZmI0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGZiNGZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMDUwNzBmIi8+CiAgPGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMjIiIGZpbGw9InVybCgjZykiLz4KICA8cGF0aCBkPSJNMzIgNnY1Mk02IDMyaDUyIiBzdHJva2U9IiM4ZmI0ZmYiIHN0cm9rZS1vcGFjaXR5PSIuNTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+Cjwvc3ZnPgo=" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ------------------------------------------------------------
+   Himanshu Grover — personal site
+   Dark-sky theme. Edit the colour tokens below to re-skin.
+------------------------------------------------------------ */
+:root {
+  --bg: #05070f;
+  --panel: rgba(12, 18, 38, 0.72);
+  --line: rgba(160, 180, 255, 0.14);
+  --text: #e8ebf7;
+  --muted: #9aa4c6;
+  --dim: #6f7aa0;
+  --accent: #8fb4ff;
+  --accent-2: #ffbf80;
+  --radius: 16px;
+  --maxw: 1080px;
+  --font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  color: var(--text);
+  font: 16px/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1100px 700px at 82% -8%, #121d42 0%, transparent 62%),
+    radial-gradient(900px 600px at -8% 42%, #1b1036 0%, transparent 58%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+#stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- navigation ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(5, 7, 15, 0.62);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font: 600 1.05rem var(--font-display); letter-spacing: 0.02em; color: var(--text);
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 12px var(--accent);
+  animation: glow 4s ease-in-out infinite;
+}
+@keyframes glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+.nav-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  display: block; padding: 6px 12px; border-radius: 999px;
+  color: var(--muted); font-size: 0.92rem;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; background: rgba(143,180,255,.08); }
+.nav-links a[aria-current="true"] { color: var(--text); background: rgba(143,180,255,.14); }
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--line); color: var(--text);
+  border-radius: 10px; padding: 6px 12px; font: inherit; cursor: pointer;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+  padding: 88px 0 64px;
+}
+.eyebrow {
+  font: 500 0.8rem var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-2); margin: 0 0 14px;
+}
+h1 {
+  font: 700 clamp(2.6rem, 6vw, 4.2rem)/1.02 var(--font-display);
+  letter-spacing: -0.025em; margin: 0 0 20px;
+  background: linear-gradient(180deg, #ffffff 30%, #a9bdf5 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lede { font-size: 1.18rem; color: #c9d0ea; max-width: 34em; margin: 0 0 14px; }
+.affil { color: var(--muted); margin: 0 0 28px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 999px; font-weight: 500; font-size: 0.95rem;
+  color: var(--text); border: 1px solid var(--line); background: rgba(143,180,255,.06);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); background: rgba(143,180,255,.14); border-color: rgba(143,180,255,.4); }
+.btn.primary { background: var(--accent); color: #07102a; border-color: var(--accent); }
+.btn.primary:hover { background: #a9c5ff; }
+
+.pulse-panel {
+  margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  background: #070b18; box-shadow: 0 30px 80px -30px rgba(80,120,255,.4);
+}
+.pulse-panel canvas { display: block; width: 100%; aspect-ratio: 5 / 4; }
+.pulse-panel figcaption {
+  padding: 10px 16px; border-top: 1px solid var(--line);
+  font: 0.72rem var(--font-mono); letter-spacing: .06em; color: var(--dim);
+}
+
+/* ---------- stats ---------- */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  margin-bottom: 24px;
+}
+.stat { background: rgba(8, 12, 26, 0.85); padding: 22px 20px; }
+.stat b { display: block; font: 600 2rem/1.1 var(--font-display); color: var(--text); }
+.stat span { color: var(--muted); font-size: 0.88rem; }
+
+/* ---------- sections ---------- */
+section { padding: 64px 0; }
+.kicker { font: 500 0.78rem var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--accent-2); margin: 0 0 8px; }
+h2 { font: 600 clamp(1.7rem, 3.4vw, 2.2rem)/1.15 var(--font-display); letter-spacing: -0.015em; margin: 0 0 28px; }
+h3 { font: 600 1.1rem var(--font-display); margin: 0 0 8px; }
+p { margin: 0 0 14px; }
+.muted { color: var(--muted); }
+
+.about { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+.avatar {
+  position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden;
+  display: grid; place-items: center; font: 600 3rem var(--font-display); color: var(--accent);
+  background: radial-gradient(circle at 30% 25%, #1c2a5a, #0a1024);
+  border: 1px solid var(--line); box-shadow: 0 0 60px -10px rgba(120,160,255,.35);
+}
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; transition: border-color .2s ease, transform .2s ease;
+}
+.card:hover { border-color: rgba(143,180,255,.38); transform: translateY(-2px); }
+.card .tag { font: 0.72rem var(--font-mono); letter-spacing: .12em; color: var(--accent); text-transform: uppercase; display: block; margin-bottom: 10px; }
+.card p { color: var(--muted); margin: 0; font-size: 0.97rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip {
+  font: 0.78rem var(--font-mono); color: var(--muted);
+  border: 1px solid var(--line); padding: 4px 12px; border-radius: 999px; background: rgba(143,180,255,.05);
+}
+
+/* news + timeline */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li {
+  display: grid; grid-template-columns: 130px 1fr; gap: 18px;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.rows li:last-child { border-bottom: 0; }
+.rows .when { font: 0.82rem var(--font-mono); color: var(--dim); padding-top: 3px; }
+.rows .what b { color: var(--text); font-weight: 600; }
+.rows .what small { display: block; color: var(--muted); font-size: 0.92rem; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+/* publications */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 74px 1fr; gap: 16px; }
+.pubs li:last-child { border-bottom: 0; }
+.pubs .yr { font: 0.85rem var(--font-mono); color: var(--accent-2); padding-top: 3px; }
+.pubs .title { color: var(--text); font-weight: 500; display: block; }
+.pubs .authors { color: var(--muted); font-size: 0.92rem; display: block; margin-top: 2px; }
+.pubs .authors strong { color: var(--text); font-weight: 600; }
+.pubs .venue { color: var(--dim); font: 0.82rem var(--font-mono); display: block; margin-top: 4px; }
+.pubs .links { margin-top: 6px; display: flex; gap: 14px; font-size: 0.85rem; }
+.more { margin-top: 22px; }
+
+details { border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px; background: var(--panel); margin-top: 18px; }
+summary { cursor: pointer; color: var(--text); font-weight: 500; }
+details ul { margin: 12px 0 4px; padding-left: 18px; color: var(--muted); font-size: 0.94rem; }
+
+.page-head { padding: 72px 0 8px; }
+.page-head h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+
+/* contact + footer */
+.contact-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 32px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px;
+}
+.contact-list { list-style: none; margin: 0; padding: 0; }
+.contact-list li { padding: 8px 0; display: flex; gap: 14px; color: var(--muted); }
+.contact-list li a { overflow-wrap: anywhere; min-width: 0; }
+.contact-card > * { min-width: 0; }
+.contact-list li span:first-child { font: 0.78rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); width: 76px; padding-top: 3px; flex: none; }
+footer { padding: 40px 0 56px; color: var(--dim); font-size: 0.85rem; border-top: 1px solid var(--line); margin-top: 40px; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* reveal on scroll (only when JS is running) */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 56px; gap: 36px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .about { grid-template-columns: 1fr; }
+  .cards, .two, .contact-card { grid-template-columns: 1fr; }
+  .rows li { grid-template-columns: 1fr; gap: 2px; }
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
+    background: rgba(5,7,15,.95); padding: 10px 16px 16px; border-bottom: 1px solid var(--line);
+  }
+  .nav-links.open { display: flex; }
+}
+@media (max-width: 520px) {
+  .contact-card { padding: 22px; }
+  .pubs li { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .brand .dot { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+@media print {
+  #stars, .nav { display: none; }
+  body { background: #fff; color: #000; }
+}
+
+</style>
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>Himanshu Grover</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="nav-links" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#appointments">Experience</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="index.html#teaching">Teaching</a></li>
+      <li><a href="publications.html" aria-current="true">Publications</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <p class="kicker">Output</p>
+    <h1>Publications &amp; talks</h1>
+    <p class="muted">Papers, telegrams, proceedings and presentations. My name is in bold; collaboration papers list the lead authors followed by “et al.”.</p>
+  </div>
+
+  <!-- JOURNAL ARTICLES -->
+  <section>
+    <h2>Journal articles</h2>
+    <ul class="pubs">
+      <li><span class="yr">2026</span><span>
+        <span class="title">Profile Reconstruction from Temporally Stable Emission Components for Timing PSR J1713+0747</span>
+        <span class="authors">S. Chowdhury, M. A. Krishnakumar, S. Dhakappa, et al., including <strong>H. Grover</strong></span>
+        <span class="venue">Submitted to Journal of High Energy Astrophysics</span>
+        <span class="links"><a href="https://arxiv.org/abs/2608.04108">arXiv:2608.04108</a></span></span></li>
+      <li><span class="yr">2026</span><span>
+        <span class="title">The Indian Pulsar Timing Array Data Release 2: III. Search for a Stochastic Gravitational Wave Background</span>
+        <span class="authors">H. Tahbildar, K. Vara, M. Surnis, et al., including <strong>H. Grover</strong></span>
+        <span class="venue">Submitted to Physical Review D</span>
+        <span class="links"><a href="https://arxiv.org/abs/2608.02808">arXiv:2608.02808</a></span></span></li>
+      <li><span class="yr">2026</span><span>
+        <span class="title">Observations of the 21 cm HI Line from the Milky Way galaxy using Pyramidal Horn Radio Telescope</span>
+        <span class="authors">K. Bhattacharjee, <strong>H. Grover</strong>, P. Arumugam</span>
+        <span class="venue">Journal of Astrophysics and Astronomy, 47, 75</span>
+        <span class="links"><a href="https://arxiv.org/abs/2512.19262">arXiv:2512.19262</a></span></span></li>
+      <li><span class="yr">2026</span><span>
+        <span class="title">The Indian Pulsar Timing Array Data Release 2: II. Customised Single-Pulsar Noise Analysis and Noise Budget</span>
+        <span class="authors">K. Nobleson, C. Dwivedi, S. Desai, B. C. Joshi, <strong>H. Grover</strong>, et al.</span>
+        <span class="venue">Journal of High Energy Astrophysics, 53, 100594</span>
+        <span class="links"><a href="https://arxiv.org/abs/2512.20455">arXiv:2512.20455</a></span></span></li>
+      <li><span class="yr">2026</span><span>
+        <span class="title">Revisiting wideband pulsar timing measurements</span>
+        <span class="authors">A. Susobhanan, A. K. Paladi, R. Desmecht, et al., including <strong>H. Grover</strong></span>
+        <span class="venue">Monthly Notices of the Royal Astronomical Society, 547, 4</span>
+        <span class="links"><a href="https://arxiv.org/abs/2512.01288">arXiv:2512.01288</a></span></span></li>
+      <li><span class="yr">2026</span><span>
+        <span class="title">Post-glitch Recovery and the Neutron Star Structure: The Vela Pulsar</span>
+        <span class="authors"><strong>H. Grover</strong>, E. Gügercinoğlu, B. C. Joshi, M. A. Krishnakumar, S. Desai, P. Arumugam, D. Bandyopadhyay</span>
+        <span class="venue">Publications of the Astronomical Society of Australia, 43, 25</span>
+        <span class="links"><a href="https://arxiv.org/abs/2506.02100">arXiv:2506.02100</a></span></span></li>
+      <li><span class="yr">2025</span><span>
+        <span class="title">The Indian Pulsar Timing Array Data Release 2: I. Dataset and Timing Analysis</span>
+        <span class="authors">P. Rana, P. Tarafdar, K. Nobleson, et al., including <strong>H. Grover</strong></span>
+        <span class="venue">Publications of the Astronomical Society of Australia, 42, 108</span>
+        <span class="links"><a href="https://arxiv.org/abs/2506.16769">arXiv:2506.16769</a></span></span></li>
+      <li><span class="yr">2024</span><span>
+        <span class="title">The ORT and the uGMRT Pulsar Monitoring Program: Pulsar Timing Irregularities &amp; the Gaussian Process Realisation</span>
+        <span class="authors"><strong>H. Grover</strong>, B. C. Joshi, J. Singha, E. Gügercinoğlu, P. Arumugam, D. Bandyopadhyay, J. O. Chibueze, S. Desai, I. O. Eya, A. Kundu, J. O. Urama</span>
+        <span class="venue">Publications of the Astronomical Society of Australia, 41, 102</span>
+        <span class="links"><a href="https://arxiv.org/abs/2405.14351">arXiv:2405.14351</a></span></span></li>
+      <li><span class="yr">2022</span><span>
+        <span class="title">Pulsar timing irregularities and the Neutron Star interior in the era of SKA: An Indian Outlook</span>
+        <span class="authors">J. Singha, B. C. Joshi, D. Bandyopadhyay, <strong>H. Grover</strong>, S. Desai, P. Arumugam, S. Banik</span>
+        <span class="venue">Journal of Astrophysics and Astronomy, 43, 81</span>
+        <span class="links"><a href="https://arxiv.org/abs/2207.06446">arXiv:2207.06446</a></span></span></li>
+    </ul>
+  </section>
+
+  <!-- ATELS -->
+  <section>
+    <h2>Astronomer's Telegrams</h2>
+    <ul class="pubs">
+      <li><span class="yr">2025</span><span>
+        <span class="title">Confirmation of a glitch in PSR J1740−3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)</span>
+        <span class="authors"><strong>H. Grover</strong>, B. C. Joshi, M. A. Krishnakumar, P. Arumugam</span>
+        <span class="venue">ATel 17489 · November 2025</span>
+        <span class="links"><a href="https://www.astronomerstelegram.org/?read=17489">ATel</a></span></span></li>
+      <li><span class="yr">2024</span><span>
+        <span class="title">Vela pulsar (PSR J0835−4510) glitch observed at the Ooty Radio Telescope (ORT)</span>
+        <span class="authors"><strong>H. Grover</strong>, M. A. Krishnakumar, B. C. Joshi, P. Arumugam</span>
+        <span class="venue">ATel 16611 · May 2024</span>
+        <span class="links"><a href="https://www.astronomerstelegram.org/?read=16611">ATel</a></span></span></li>
+      <li><span class="yr">2023</span><span>
+        <span class="title">Confirmation of glitch event detected in PSR J1740−3015 using the upgraded Giant Metrewave Radio Telescope (uGMRT)</span>
+        <span class="authors"><strong>H. Grover</strong>, J. Singha, B. C. Joshi, P. Arumugam, E. Gügercinoğlu, D. Bandyopadhyay, S. Desai, S. Banik, I. Eya, J. Chibueze, J. Urama, A. Kundu</span>
+        <span class="venue">ATel 15851 · January 2023</span>
+        <span class="links"><a href="https://www.astronomerstelegram.org/?read=15851">ATel</a></span></span></li>
+      <li><span class="yr">2022</span><span>
+        <span class="title">Detection of a glitch event in PSR J0742−2822 observed using the Automated Glitch Detection Pipeline implemented at the Ooty Radio Telescope (ORT)</span>
+        <span class="authors"><strong>H. Grover</strong>, J. Singha, B. C. Joshi, P. Arumugam</span>
+        <span class="venue">ATel 15629 · September 2022</span>
+        <span class="links"><a href="https://www.astronomerstelegram.org/?read=15629">ATel</a></span></span></li>
+    </ul>
+  </section>
+
+  <!-- PROCEEDINGS -->
+  <section>
+    <h2>Conference proceedings</h2>
+    <ul class="pubs">
+      <li><span class="yr">2024</span><span><span class="title">Machine learning approaches to automate the calibration process for γ-ray detectors</span><span class="authors">S. Sudarshanam, Madhu, <strong>H. Grover</strong>, A. Y. Deo, P. Arumugam</span><span class="venue">DAE Symp. Nucl. Phys. 68, 1115–1116</span></span></li>
+      <li><span class="yr">2024</span><span><span class="title">Bayesian Inference for Modeling Pulsar Glitch Recovery</span><span class="authors">N. Lambe, <strong>H. Grover</strong>, P. Arumugam</span><span class="venue">DAE Symp. Nucl. Phys. 68, 751–752</span></span></li>
+      <li><span class="yr">2024</span><span><span class="title">11.2 GHz Motorized Small Radio Telescope constructed from Satellite TV Dish</span><span class="authors">K. Bhattacharjee, K. Shah, <strong>H. Grover</strong>, J. Barman, A. Shukla, P. Arumugam</span><span class="venue">6th URSI Regional Conference on Radio Science</span></span></li>
+      <li><span class="yr">2024</span><span><span class="title">The ORT and the uGMRT Pulsar Monitoring Program: Timing Irregularities in Pulsars</span><span class="authors"><strong>H. Grover</strong>, B. C. Joshi, P. Arumugam</span><span class="venue">6th URSI Regional Conference on Radio Science</span></span></li>
+      <li><span class="yr">2022</span><span><span class="title">Revisiting the fractional moment of inertia of rotating neutron stars</span><span class="authors"><strong>H. Grover</strong>, B. Bhat, J. Singha, A. Kumar, P. Arumugam</span><span class="venue">DAE Symp. Nucl. Phys. 66, 778–779</span></span></li>
+      <li><span class="yr">2022</span><span><span class="title">Neutron Star Equation of state in single and two-fluid formalism</span><span class="authors">B. Bhat, P. Marmat, <strong>H. Grover</strong>, J. Singha, A. Kumar, P. Arumugam</span><span class="venue">DAE Symp. Nucl. Phys. 66, 782–783</span></span></li>
+      <li><span class="yr">2022</span><span><span class="title">The glitch rise times of rotating neutron stars</span><span class="authors">J. Singha, <strong>H. Grover</strong>, P. Marmat, P. Arumugam</span><span class="venue">DAE Symp. Nucl. Phys. 66, 798–799</span></span></li>
+    </ul>
+  </section>
+
+  <!-- TALKS -->
+  <section>
+    <h2>Talks &amp; posters</h2>
+    <ul class="pubs">
+      <li><span class="yr">Sep 2025</span><span><span class="title">Investigation of Pulsar Timing Irregularities to Understand Neutron Star Interiors</span><span class="venue">Poster · Pulsar 2025, INAF-OAC, Cagliari, Italy</span></span></li>
+      <li><span class="yr">Jul 2025</span><span><span class="title">Investigation of Pulsar Timing Irregularities to Understand Neutron Star Interiors</span><span class="venue">Invited talk · Australasian Pulsar Meeting (Orange Meeting)</span></span></li>
+      <li><span class="yr">Jun 2025</span><span><span class="title">The Motion and Mysteries of Isolated Neutron Stars</span><span class="venue">Oral · IPTA 2025, Caltech, Pasadena, USA</span></span></li>
+      <li><span class="yr">Apr 2025</span><span><span class="title">The Rotational Mysteries of Pulsars</span><span class="venue">Oral · Research Scholar Day, IIT Roorkee</span></span></li>
+      <li><span class="yr">Mar 2025</span><span><span class="title">Pulsar Glitches and the Automated Glitch Detection Pipeline</span><span class="venue">Oral · Young Astronomers' Meet 2025, TIFR Mumbai</span></span></li>
+      <li><span class="yr">Mar 2025</span><span><span class="title">AstroSat timing and spectral analysis of the Crab Pulsar (PSR J0534+2200)</span><span class="venue">Poster · RETCO-VI, IIT Indore</span></span></li>
+      <li><span class="yr">Oct 2024</span><span><span class="title">The ORT and the uGMRT Pulsar Monitoring Program: Timing Irregularities in Pulsars</span><span class="venue">Poster · URSI-RCRS 2024, ARIES Nainital and GEHU Bhimtal</span></span></li>
+      <li><span class="yr">Aug 2024</span><span><span class="title">Spin-down rate of the Crab pulsar since AstroSat's launch, from LAXPC and CZTI</span><span class="venue">Bharatiya Antariksh Hackathon 2024, ISRO · top position in our problem statement, 2nd runner-up among 30 finalists</span></span></li>
+      <li><span class="yr">Mar 2024</span><span><span class="title">Monitoring Timing Irregularities in Pulsars using the uGMRT and the ORT</span><span class="venue">Oral · Young Astronomers' Meet 2024, Christ University, Bangalore</span></span></li>
+      <li><span class="yr">Feb 2024</span><span><span class="title">Monitoring Pulsar Glitches with the uGMRT and the ORT</span><span class="venue">Oral · National Space Science Symposium 2024, Goa University · Best Paper &amp; Presentation Award</span></span></li>
+      <li><span class="yr">Dec 2022</span><span><span class="title">Revisiting the fractional moment of inertia of rotating neutron stars</span><span class="venue">Poster · 66th DAE Symposium on Nuclear Physics, Cotton University</span></span></li>
+      <li><span class="yr">Mar 2022</span><span><span class="title">The study of timing irregularities in pulsars</span><span class="venue">Poster · ASI Meeting 2022, IIT Roorkee</span></span></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Himanshu Grover</span>
+    <a href="index.html">← Back to home</a>
+  </div>
+</footer>
+
+<script>
+/* Starfield, stacked-pulse hero plot, nav behaviour, reveal-on-scroll. No dependencies. */
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------- starfield ---------------- */
+  (function stars() {
+    var c = document.getElementById("stars");
+    if (!c) return;
+    var ctx = c.getContext("2d");
+    var w, h, dpr, field = [], meteor = null, nextMeteor = 6000;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth; h = window.innerHeight;
+      c.width = w * dpr; c.height = h * dpr;
+      c.style.width = w + "px"; c.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round((w * h) / 5200);
+      field = [];
+      for (var i = 0; i < n; i++) {
+        var z = Math.random();
+        field.push({
+          x: Math.random() * w, y: Math.random() * h, z: z,
+          r: 0.3 + z * 1.15, tw: Math.random() * 6.28, sp: 0.4 + Math.random() * 1.1,
+          hue: Math.random() < 0.14 ? 28 : (Math.random() < 0.5 ? 220 : 208)
+        });
+      }
+      if (reduce) draw(0);
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      var sy = window.scrollY || 0;
+      for (var i = 0; i < field.length; i++) {
+        var s = field[i];
+        var y = (s.y - sy * 0.06 * s.z) % h; if (y < 0) y += h;
+        var a = reduce ? 0.7 * (0.4 + 0.6 * s.z)
+                       : (0.35 + 0.65 * s.z) * (0.62 + 0.38 * Math.sin(t * 0.001 * s.sp + s.tw));
+        ctx.fillStyle = "hsla(" + s.hue + ",70%," + (80 + s.z * 15) + "%," + a + ")";
+        ctx.beginPath(); ctx.arc(s.x, y, s.r, 0, 6.2832); ctx.fill();
+      }
+      if (!reduce) {
+        if (!meteor && t > nextMeteor) {
+          meteor = { x: Math.random() * w * 0.8 + w * 0.2, y: Math.random() * h * 0.35, life: 0 };
+        }
+        if (meteor) {
+          meteor.life += 1; var p = meteor.life / 55;
+          var mx = meteor.x - p * 260, my = meteor.y + p * 130;
+          var g = ctx.createLinearGradient(mx, my, mx + 70, my - 35);
+          g.addColorStop(0, "rgba(255,255,255," + (0.8 * (1 - p)) + ")");
+          g.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.strokeStyle = g; ctx.lineWidth = 1.4;
+          ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(mx + 70, my - 35); ctx.stroke();
+          if (p >= 1) { meteor = null; nextMeteor = t + 9000 + Math.random() * 12000; }
+        }
+        requestAnimationFrame(draw);
+      }
+    }
+
+    window.addEventListener("resize", resize);
+    if (reduce) window.addEventListener("scroll", function () { draw(0); }, { passive: true });
+    resize();
+    if (!reduce) requestAnimationFrame(draw);
+  })();
+
+  /* ---------------- stacked single-pulse plot (illustrative) ---------------- */
+  (function pulses() {
+    var cv = document.getElementById("pulses");
+    if (!cv) return;
+    var ctx = cv.getContext("2d");
+    var N = 40, P = 160, rows = [], w, h, dpr, off = 0, last = 0, running = true;
+
+    function gauss(x, m, s) { var d = (x - m) / s; return Math.exp(-0.5 * d * d); }
+    function randn() {
+      var u = 0, v = 0;
+      while (!u) u = Math.random(); while (!v) v = Math.random();
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(6.2832 * v);
+    }
+    function makeRow() {
+      var a = 0.35 + Math.random() * 0.65, b = 0.25 + Math.random() * 0.5, j = (Math.random() - 0.5) * 0.02;
+      var weak = Math.random() < 0.2 ? 0.2 : 1, r = new Float32Array(P);
+      for (var i = 0; i < P; i++) {
+        var x = i / (P - 1);
+        var v = gauss(x, 0.46 + j, 0.035) * a + gauss(x, 0.56 + j, 0.028) * b * weak +
+                gauss(x, 0.38 + j, 0.02) * 0.18 * Math.random() + Math.abs(randn()) * 0.035 * (0.5 + Math.random());
+        r[i] = v * Math.min(1, x * 8, (1 - x) * 8);
+      }
+      return r;
+    }
+    function resize() {
+      var rect = cv.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = rect.width; h = rect.height;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    function render() {
+      ctx.fillStyle = "#070b18"; ctx.fillRect(0, 0, w, h);
+      var padX = w * 0.07, plotW = w - 2 * padX, top = h * 0.1, rowH = (h * 0.8) / (N - 1), amp = h * 0.2;
+      for (var i = 0; i < N; i++) {
+        var t = i + off, y0 = top + t * rowH - rowH;
+        var edge = Math.max(0, Math.min(1, t / 6, (N - t) / 3));
+        var row = rows[i];
+        ctx.beginPath(); ctx.moveTo(padX, y0);
+        for (var k = 0; k < P; k++) ctx.lineTo(padX + plotW * k / (P - 1), y0 - row[k] * amp);
+        ctx.lineTo(padX + plotW, y0 + h); ctx.lineTo(padX, y0 + h); ctx.closePath();
+        ctx.fillStyle = "#070b18"; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(padX, y0);
+        for (k = 0; k < P; k++) ctx.lineTo(padX + plotW * k / (P - 1), y0 - row[k] * amp);
+        var al = (0.22 + 0.68 * (t / N)) * edge;
+        ctx.strokeStyle = "rgba(190,212,255," + al.toFixed(3) + ")"; ctx.lineWidth = 1.15; ctx.stroke();
+      }
+    }
+    function tick(ts) {
+      if (running && !reduce) {
+        var dt = last ? Math.min((ts - last) / 1000, 0.1) : 0;
+        off += dt * 0.85;
+        while (off >= 1) { off -= 1; rows.unshift(makeRow()); rows.pop(); }
+        render();
+      }
+      last = ts;
+      if (!reduce) requestAnimationFrame(tick);
+    }
+
+    for (var i = 0; i < N; i++) rows.push(makeRow());
+    window.addEventListener("resize", resize);
+    resize();
+    if (!reduce) {
+      requestAnimationFrame(tick);
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (e) { running = e[0].isIntersecting; last = 0; }).observe(cv);
+      }
+    }
+  })();
+
+  /* ---------------- nav toggle ---------------- */
+  var toggle = document.querySelector(".nav-toggle"), links = document.querySelector(".nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") { links.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
+    });
+  }
+
+  /* ---------------- scroll-spy + reveal ---------------- */
+  if ("IntersectionObserver" in window) {
+    var spy = document.querySelectorAll(".nav-links a[href^='#']");
+    if (spy.length) {
+      var map = {};
+      spy.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+      var so = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && map[en.target.id]) {
+            spy.forEach(function (a) { a.removeAttribute("aria-current"); });
+            map[en.target.id].setAttribute("aria-current", "true");
+          }
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) so.observe(el); });
+    }
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); ro.unobserve(en.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach(function (el) { ro.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------------- email (light obfuscation against scrapers) ---------------- */
+  document.querySelectorAll("a.email").forEach(function (a) {
+    var addr = a.dataset.u + "@" + a.dataset.d;
+    a.href = "mailto:" + addr; a.textContent = addr;
+  });
+
+  var yr = document.getElementById("year");
+  if (yr) yr.textContent = new Date().getFullYear();
+})();
+
+</script>
+</body>
+</html>
