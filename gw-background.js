@@ -16,8 +16,8 @@
   var CURSOR_PULL = 1;          // 1 = lines bend toward cursor (gravity); -1 = push away (like the old star field)
   var LINE_RGB = "143,180,255"; // line colour
   var WAVE_AMP = 1;             // overall gravitational-wave strength (try 0.6 – 1.6)
-  var MIN_SRC = 3, MAX_SRC = 8; // random number of pulsars and of binaries
-  var DRIFT = 1;                // how fast sources wander (0 = frozen, 2 = twice as fast)
+  var MIN_SRC = 2, MAX_SRC = 7; // random number of pulsars and of binaries
+  var DRIFT = 2;                // how fast sources wander (0 = frozen, 2 = twice as fast)
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
   function randInt(a, b) { return Math.floor(rnd(a, b + 1)); }
